@@ -32,10 +32,12 @@
     <script>
         
         $("html").fileUplodPlugins({
-            inputFileUpload: "#fileId",
-            ValidType: ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],
+           inputFileUpload: "#fileId",
+            ValidType: ['image/jpeg', 'image/png',],
             btnUpload: ".loader-title__btn",
-            deleteImageBtn: ".image-previwe__delete-btn"
+            deleteImageBtn: ".image-previwe__delete-btn",
+            boxFileUploadPreviwe: '.image-previwe',
+            boxErrorPreviwe: '.error-wrapper',
         })
     </script>
 </body>

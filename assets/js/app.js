@@ -1,15 +1,15 @@
-(function($){
-    $.fn.fileUplodPlugins = function(option){
+(function ($) {
+    $.fn.fileUplodPlugins = function (option) {
+        let allData = []
         let settings = $.extend({
             inputFileUpload: "#fileId",
-            ValidType: ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],
+            ValidType: ['image/jpeg', 'image/png', ],
             btnUpload: ".loader-title__btn",
-            deleteImageBtn: ".image-previwe__delete-btn"
-        },option)
-        let boxFileUpload = document.querySelector('.image-previwe');
-        let errorWrapper = document.querySelector('.error-wrapper');
-        let allData = []
-        let ValidType = ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain']
+            deleteImageBtn: ".image-previwe__delete-btn",
+            boxFileUploadPreviwe: '.image-previwe',
+            boxErrorPreviwe: '.error-wrapper',
+        }, option)
+        
 
         function removeElement(id) {
 
@@ -55,8 +55,9 @@
                     isValid: false,
                     preViwe: null,
                 }
-                ValidType.forEach(data => {
-                    console.log("checkTypeFiles", file, file.type == data)
+
+                settings.ValidType.forEach((data, index) => {
+
                     if (file.type == data) {
                         file.previewimg = null;
                         validation.isValid = true;
@@ -79,24 +80,18 @@
 
             function uploadClick(input) {
                 let inputValue = Object.values(input.files)
-                inputValue.map(itme => {
-                    let isElementVaild = checkTypeFiles(itme)
-                    if (isElementVaild.isValid) {
-                        allData.push({
-                            id: itme.lastModified,
-                            file: itme
-                        });
-                    }
-                });
-
                 if (input.files.length) {
                     inputValue.forEach(element => {
                         let isElementVaild = checkTypeFiles(element)
-                        console.log("isElementVaild object ===>", isElementVaild)
+
                         if (isElementVaild.isValid) {
+                            allData.push({
+                                id: element.lastModified,
+                                file: element
+                            });
                             renderImageData(isElementVaild.preViwe);
                         } else {
-                            errorWrapper.appendChild(createError());
+                            settings.boxErrorPreviwe.appendChild(createError());
                             setTimeout(() => {
                                 $('.error-format').fadeOut("slow")
                             }, 2500);
@@ -107,23 +102,18 @@
 
             function DragAndDropUpload(input) {
                 let inputValue = Object.values(input)
-                inputValue.map(itme => {
-                    let isElementVaild = checkTypeFiles(itme)
-                    if (isElementVaild.isValid) {
-                        allData.push({
-                            id: itme.lastModified,
-                            file: itme
-                        });
-                    }
-                });
                 if (input.length) {
                     inputValue.forEach((element) => {
                         let isElementVaild = checkTypeFiles(element)
-                        console.log("isElementVaild object ===>", isElementVaild)
+
                         if (isElementVaild.isValid) {
+                            allData.push({
+                                id: element.lastModified,
+                                file: element
+                            });
                             renderImageData(isElementVaild.preViwe);
                         } else {
-                            errorWrapper.appendChild(createError());
+                            settings.boxErrorPreviwe.appendChild(createError());
                         }
                     });
                 }
@@ -131,10 +121,10 @@
 
             function renderImageData(arrayItme) {
                 var reader = new FileReader();
-                console.log("renderImageData ====>", arrayItme.hasOwnProperty("previewimg"))
+
                 reader.onload = function (e) {
                     let previweTag = CreatImagePreview(e.target.result, arrayItme.lastModified, arrayItme.previewimg);
-                    boxFileUpload.appendChild(previweTag);
+                    settings.boxFileUploadPreviwe.appendChild(previweTag);
                 }
 
                 reader.readAsDataURL(arrayItme);
@@ -159,12 +149,12 @@
                 $(".box-fileupload__lable").text("Upload");
 
                 var file = e.originalEvent.dataTransfer.files;
-                console.log("fffffffff", file)
+
                 DragAndDropUpload(file)
             });
         })
         $(settings.btnUpload).click(function () {
-            console.log("this is all image ===> ", allData);
+
         })
         $(document).on('click', settings.deleteImageBtn, function () {
             let dataId = $(this).attr("data-id")
@@ -172,6 +162,6 @@
             $(this).parent().remove()
         });
         return this;
- 
+
     }
 }(jQuery))
