@@ -63,7 +63,7 @@ $(document).ready(function(){
 
 ### plugin preview
 
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)
+![](https://github.com/novin-front/file-upload-jquery-plugin/blob/master/assets/img/file-screenshot-2.JPG)
 
 
 ![](https://pandao.github.io/editor.md/examples/images/4.jpg)
