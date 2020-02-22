@@ -126,18 +126,16 @@ $(document).ready(function(){
 
 ```javascript
 $(document).ready(function(){
-   $("html").fileUplodPlugins({
-            inputFileUpload: "#fileId",
-            ValidType: ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png','application/pdf', 'text/plain'],
+    $(".your-selector").fileUplodPlugins({
+           inputFileUpload: "#fileId",
+            ValidType: ['image/jpeg', 'image/png',],
             btnUpload: ".loader-title__btn",
-            deleteImageBtn: ".image-previwe__delete-btn"
+            deleteImageBtn: ".image-previwe__delete-btn",
+            boxFileUploadPreviwe: '.image-previwe',
+            boxErrorPreviwe: '.error-wrapper',
     })
 });
 ```
 ----
 ### Sample Data Type
-<<<<<<< HEAD
     ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],`
-=======
-    ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],`
->>>>>>> c94f68b9db04458297f682e31e2dbd3a0f953706
