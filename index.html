@@ -10,11 +10,11 @@
 
 <body>
     <div class="maincontent">
-        <div class="loader">
-            <div class="loader-title">
+        <div class="file-upload-wrapper">
+            <div class="file-upload-wrapper-title">
                 <h4>File Upload</h4>
                 <hr />
-                <button class="loader-title__btn">
+                <button class="file-upload-wrapper-title__btn">
                     Upload Now
                 </button>
             </div>
@@ -34,7 +34,7 @@
         $("html").fileUplodPlugins({
            inputFileUpload: "#fileId",
             ValidType: ['image/jpeg', 'image/png',],
-            btnUpload: ".loader-title__btn",
+            btnUpload: ".file-upload-wrapper-title__btn",
             deleteImageBtn: ".image-previwe__delete-btn",
             boxFileUploadPreviwe: '.image-previwe',
             boxErrorPreviwe: '.error-wrapper',

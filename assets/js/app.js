@@ -4,7 +4,7 @@
         let settings = $.extend({
             inputFileUpload: "#fileId",
             ValidType: ['image/jpeg', 'image/png', ],
-            btnUpload: ".loader-title__btn",
+            btnUpload: ".file-upload-wrapper-title__btn",
             deleteImageBtn: ".image-previwe__delete-btn",
             boxFileUploadPreviwe: '.image-previwe',
             boxErrorPreviwe: '.error-wrapper',
@@ -91,7 +91,7 @@
                             });
                             renderImageData(isElementVaild.preViwe);
                         } else {
-                            settings.boxErrorPreviwe.appendChild(createError());
+                            $(settings.boxErrorPreviwe).append(createError());
                             setTimeout(() => {
                                 $('.error-format').fadeOut("slow")
                             }, 2500);
@@ -124,7 +124,7 @@
 
                 reader.onload = function (e) {
                     let previweTag = CreatImagePreview(e.target.result, arrayItme.lastModified, arrayItme.previewimg);
-                    settings.boxFileUploadPreviwe.appendChild(previweTag);
+                    $(settings.boxFileUploadPreviwe).append(previweTag);
                 }
 
                 reader.readAsDataURL(arrayItme);

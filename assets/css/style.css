@@ -16,7 +16,7 @@ body {
 ul{
     list-style: none;
 }
-.loader {
+.file-upload-wrapper {
     width: 60%;
     height: 100%;
     margin: 0 auto;
@@ -53,7 +53,7 @@ ul{
     margin: 0 auto;
     padding: 50px 0;
 }
-.loader {
+.file-upload-wrapper {
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -171,7 +171,7 @@ label.file-upload-btn {
 .image-previwe__close-btn:hover {
     opacity: 1;
 }
-.loader-title {
+.file-upload-wrapper-title {
     width: 92%;
     min-height: 50px;
     padding: 10px;
@@ -181,18 +181,18 @@ label.file-upload-btn {
     align-items: center;
     flex-flow: column;
 }
-.loader-title h4 {
+.file-upload-wrapper-title h4 {
     display: inline-block;
     font-size: 20px;
     padding: 10px 0px 6px 0;
     font-weight: 200;
 }
-.loader-title hr {
+.file-upload-wrapper-title hr {
     width: 21%;
     display: inline-block;
     margin: 6px 0;
 }
-.loader-title__btn {
+.file-upload-wrapper-title__btn {
     background-color: #4099ff;
     border-color: #4099ff;
     border: none;
