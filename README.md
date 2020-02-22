@@ -63,11 +63,10 @@ $(document).ready(function(){
 
 ### plugin preview
 
+![](https://github.com/novin-front/file-upload-jquery-plugin/blob/master/assets/img/file-screenshot.JPG)
+
+
 ![](https://github.com/novin-front/file-upload-jquery-plugin/blob/master/assets/img/file-screenshot-2.JPG)
-
-
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)
-
 
 
 #### When complete, your HTML should look something like:
