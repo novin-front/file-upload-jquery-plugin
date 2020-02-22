@@ -63,11 +63,18 @@ $(document).ready(function(){
 
 ### plugin preview
 
+<<<<<<< HEAD
 ![](https://pandao.github.io/editor.md/examples/images/4.jpg)
 
 
 ![](https://pandao.github.io/editor.md/examples/images/4.jpg)
 
+=======
+![](https://github.com/novin-front/file-upload-jquery-plugin/blob/master/assets/img/file-screenshot.JPG)
+
+
+![](https://github.com/novin-front/file-upload-jquery-plugin/blob/master/assets/img/file-screenshot-2.JPG)
+>>>>>>> c94f68b9db04458297f682e31e2dbd3a0f953706
 
 
 #### When complete, your HTML should look something like:
@@ -137,4 +144,8 @@ $(document).ready(function(){
 ```
 ----
 ### Sample Data Type
+<<<<<<< HEAD
     ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],`
+=======
+    ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],`
+>>>>>>> c94f68b9db04458297f682e31e2dbd3a0f953706
