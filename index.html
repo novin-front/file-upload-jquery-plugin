@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="loader">
+            <div class="loader-title">
+                <h4>File Upload</h4>
+                <hr />
+                <button class="loader-title__btn">
+                    Upload Now
+                </button>
+            </div>
+            <div class="box-fileupload">
+                <input type="file" id="fileId" class="file-upload-input" name="files" multiple>
+                <label for="fileId" class="file-upload-btn"></label>
+                <p class="box-fileupload__lable">Drop files here to upload</p>
+            </div>
+            <div class="error-wrapper"></div>
+            <div class="image-previwe"></div>
+        </div>
+    </div>
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        
+        $("html").fileUplodPlugins({
+            inputFileUpload: "#fileId",
+            ValidType: ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],
+            btnUpload: ".loader-title__btn",
+            deleteImageBtn: ".image-previwe__delete-btn"
+        })
+    </script>
+</body>
+
+</html>
