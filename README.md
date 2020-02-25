@@ -12,7 +12,7 @@
 
 - possible set type file upload in setting
 
- [Heading link](http://file-uploader-jquery.myazdanpanah.com/ "site details")
+ [site details](http://file-uploader-jquery.myazdanpanah.com/ "site details")
 
 How to use
 -------------
