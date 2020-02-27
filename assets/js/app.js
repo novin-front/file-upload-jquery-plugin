@@ -4,10 +4,15 @@
         let settings = $.extend({
             inputFileUpload: "#fileId",
             ValidType: ['image/jpeg', 'image/png', ],
+            fileSize:500,//max size file is 500 kB
             btnUpload: ".file-upload-wrapper-title__btn",
             deleteImageBtn: ".image-previwe__delete-btn",
             boxFileUploadPreviwe: '.image-previwe',
             boxErrorPreviwe: '.error-wrapper',
+            messageView: {
+                typeValid: "File type not allowed",
+                sizeValid: "File size not Valid"
+            }
         }, option)
         
 
@@ -44,20 +49,20 @@
                 div.appendChild(previweNameImage(id));
                 return div;
             }
-            const createError = () => {
+            const createError = (message) => {
                 let div = document.createElement('div');
                 div.setAttribute("class", 'error-format');
-                div.innerHTML = "File Format Is Not Valid";
+                div.innerHTML = message;
                 return div;
             }
             let checkTypeFiles = (file) => {
                 let validation = {
                     isValid: false,
                     preViwe: null,
+                    fileSize: (file.size / 1024)
                 }
 
                 settings.ValidType.forEach((data, index) => {
-
                     if (file.type == data) {
                         file.previewimg = null;
                         validation.isValid = true;
@@ -83,19 +88,25 @@
                 if (input.files.length) {
                     inputValue.forEach(element => {
                         let isElementVaild = checkTypeFiles(element)
-
-                        if (isElementVaild.isValid) {
+                        switch (true) {
+                            case !(isElementVaild.isValid):
+                                $(settings.boxErrorPreviwe).append(createError(settings.messageView.typeValid));
+                                break;
+                            case isElementVaild.fileSize > settings.fileSize:
+                                $(settings.boxErrorPreviwe).append(createError(settings.messageView.sizeValid));
+                            break;
+                        }
+                        if (isElementVaild.isValid && isElementVaild.fileSize <= settings.fileSize) {
                             allData.push({
                                 id: element.lastModified,
                                 file: element
                             });
                             renderImageData(isElementVaild.preViwe);
-                        } else {
-                            $(settings.boxErrorPreviwe).append(createError());
+                        } 
                             setTimeout(() => {
                                 $('.error-format').fadeOut("slow")
                             }, 2500);
-                        }
+                    
                     });
                 }
             }
@@ -105,16 +116,24 @@
                 if (input.length) {
                     inputValue.forEach((element) => {
                         let isElementVaild = checkTypeFiles(element)
-
-                        if (isElementVaild.isValid) {
+                        switch (true) {
+                            case !(isElementVaild.isValid):
+                                $(settings.boxErrorPreviwe).append(createError(settings.messageView.typeValid));
+                                break;
+                            case isElementVaild.fileSize > settings.fileSize:
+                                $(settings.boxErrorPreviwe).append(createError(settings.messageView.sizeValid));
+                                break;
+                        }
+                        if (isElementVaild.isValid && isElementVaild.fileSize <= settings.fileSize) {
                             allData.push({
                                 id: element.lastModified,
                                 file: element
                             });
                             renderImageData(isElementVaild.preViwe);
-                        } else {
-                            settings.boxErrorPreviwe.appendChild(createError());
                         }
+                        setTimeout(() => {
+                            $('.error-format').fadeOut("slow")
+                        }, 2500);
                     });
                 }
             }

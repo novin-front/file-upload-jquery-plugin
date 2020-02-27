@@ -140,3 +140,13 @@ $(document).ready(function(){
 ----
 ### Sample Data Type
     ['image/jpeg', 'image/gif', 'image/svg+xml', 'image/png', 'application/pdf', 'text/plain'],`
+
+----
+### Sample File Size
+    fileSize: 300, \\Max size 300 KB
+----
+### Sample Error Message 
+    messageView: {
+                typeValid: "your error message",
+                sizeValid: "your error message"
+            }

@@ -34,10 +34,15 @@
         $("html").fileUplodPlugins({
            inputFileUpload: "#fileId",
             ValidType: ['image/jpeg', 'image/png',],
+            fileSize: 300,
             btnUpload: ".file-upload-wrapper-title__btn",
             deleteImageBtn: ".image-previwe__delete-btn",
             boxFileUploadPreviwe: '.image-previwe',
             boxErrorPreviwe: '.error-wrapper',
+            messageView: {
+                typeValid: "File type not allowed",
+                sizeValid: "File size not Valid"
+            }
         })
     </script>
 </body>
