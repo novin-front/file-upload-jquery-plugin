@@ -85,11 +85,11 @@ $(document).ready(function(){
 
 <body>
     <div class="maincontent">
-        <div class="loader">
-            <div class="loader-title">
+        <div class="file-upload-wrapper">
+            <div class="file-upload-wrapper-title">
                 <h4>File Upload</h4>
                 <hr />
-                <button class="loader-title__btn">
+                <button class="file-upload-wrapper-title__btn">
                     Upload Now
                 </button>
             </div>
@@ -126,15 +126,19 @@ $(document).ready(function(){
 #### Settings sample
 
 ```javascript
-$(document).ready(function(){
-    $(".your-selector").fileUplodPlugins({
+$(".your-selector").fileUplodPlugins({
            inputFileUpload: "#fileId",
             ValidType: ['image/jpeg', 'image/png',],
-            btnUpload: ".loader-title__btn",
+            fileSize: 500,
+            btnUpload: ".file-upload-wrapper-title__btn",
             deleteImageBtn: ".image-previwe__delete-btn",
             boxFileUploadPreviwe: '.image-previwe',
             boxErrorPreviwe: '.error-wrapper',
-    })
+            messageView: {
+                typeValid: "File type not allowed",
+                sizeValid: "File size not Valid"
+            }
+        })
 });
 ```
 ----
@@ -143,7 +147,7 @@ $(document).ready(function(){
 
 ----
 ### Sample File Size
-    fileSize: 300, \\Max size 300 KB
+    fileSize: 500, \\your Max file size for Exampel 500 KB
 ----
 ### Sample Error Message 
     messageView: {
