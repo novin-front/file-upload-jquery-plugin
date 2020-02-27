@@ -120,7 +120,9 @@ $(document).ready(function(){
                 
 1. input File Upload seletor
 2. Valid Type
-3. button Upload submit
+3. Button Upload submit
+3. Define Or Change Erorr Message 
+4. Define File Upload Max Size (KB)
                 
 ----
 #### Settings sample
