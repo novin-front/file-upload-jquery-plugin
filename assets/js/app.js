@@ -219,6 +219,7 @@
             console.log("all file", finalData)
             return finalData;
         })
+        
         $(document).on('click', settings.deleteImageBtn, function () {
             let dataId = $(this).attr("data-id");
             let fileName ;
@@ -235,7 +236,11 @@
             removeElement(dataId);
             $(this).parent().remove()
         });
-        return this;
+        return {
+            GetImageToBase64 : function () {
+                return finalData;
+            }
+        }
 
     }
 }(jQuery))

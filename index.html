@@ -30,8 +30,9 @@
     <script src="assets/js/jquery-3.4.1.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
+         
         
-        $("html").fileUplodPlugins({
+        let data = $("html").fileUplodPlugins({
            inputFileUpload: "#fileId",
             ValidType: ['image/jpeg', 'image/png',],
             fileSize: 300,
@@ -43,6 +44,9 @@
                 typeValid: "File type not allowed",
                 sizeValid: "File size not Valid"
             }
+        })
+        $(".file-upload-wrapper-title__btn").click(function(){
+            console.log("EEEEEE", data.GetImageToBase64())
         })
     </script>
 </body>
