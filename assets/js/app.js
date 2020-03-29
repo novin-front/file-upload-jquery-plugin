@@ -1,6 +1,7 @@
 (function ($) {
     $.fn.fileUplodPlugins = function (option) {
         let allData = []
+        let finalData = [];
         let settings = $.extend({
             inputFileUpload: "#fileId",
             ValidType: ['image/jpeg', 'image/png', ],
@@ -20,6 +21,16 @@
 
             allData = allData.filter(itme => {
                 return itme.id != id
+            })
+        }
+        function removeImageBase64(name){
+            finalData= finalData.filter(element => {
+                if (element[name]){
+                    delete element[name];
+                    return null
+                }
+               
+               return element
             })
         }
         $(document).ready(function () {
@@ -55,6 +66,27 @@
                 div.innerHTML = message;
                 return div;
             }
+            function readImage(inputElement) {
+                var deferred = $.Deferred();
+
+                var files = inputElement.get(0).files;
+                if (files && files[0]) {
+                    var fr = new FileReader();
+                    fr.onload = function (e) {
+                        deferred.resolve(e.target.result);
+                    };
+                    fr.readAsDataURL(files[0]);
+                } else {
+                    deferred.resolve(undefined);
+                }
+
+                return deferred.promise();
+            }
+            // $("#fileId").on('change', function () {
+            //     readImage($(this)).done(function (base64Data) {
+            //         alert(base64Data);
+            //     });
+            // });
             let checkTypeFiles = (file) => {
                 let validation = {
                     isValid: false,
@@ -84,7 +116,10 @@
             }
 
             function uploadClick(input) {
+                
+                  
                 let inputValue = Object.values(input.files)
+                
                 if (input.files.length) {
                     inputValue.forEach(element => {
                         let isElementVaild = checkTypeFiles(element)
@@ -97,6 +132,13 @@
                             break;
                         }
                         if (isElementVaild.isValid && isElementVaild.fileSize <= settings.fileSize) {
+                            console.log("input.files", element.name);
+                            readImage($(input)).done(function (base64Data) {
+                                  finalData.push({
+                                      [element.name] : base64Data,
+                                  })
+                            });
+                            console.log("input.files", finalData);
                             allData.push({
                                 id: element.lastModified,
                                 file: element
@@ -172,11 +214,24 @@
                 DragAndDropUpload(file)
             });
         })
-        $(settings.btnUpload).click(function () {
-
+        $(settings.btnUpload).click(function (e) {
+            e.preventDefault();
+            console.log("all file", finalData)
+            return finalData;
         })
         $(document).on('click', settings.deleteImageBtn, function () {
-            let dataId = $(this).attr("data-id")
+            let dataId = $(this).attr("data-id");
+            let fileName ;
+            allData.forEach((element)=>{
+                
+                if(element.id == dataId){
+                    
+                    fileName = element.file.name
+                }
+            })
+
+            console.log("get image name By id",allData,dataId,fileName)
+            removeImageBase64(fileName);
             removeElement(dataId);
             $(this).parent().remove()
         });
